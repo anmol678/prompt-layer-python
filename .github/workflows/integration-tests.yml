@@ -7,7 +7,6 @@ on:
   workflow_dispatch:
 
 env:
-  PROMPTLAYER_API_KEY: ${{ secrets.PROMPTLAYER_API_KEY }}
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 jobs:

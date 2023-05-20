@@ -6,7 +6,6 @@ from langchain.llms import PromptLayerOpenAIChat
 
 import promptlayer
 
-promptlayer.api_key = os.environ.get("PROMPTLAYER_API_KEY")
 openai = promptlayer.openai
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
