@@ -41,6 +41,7 @@ class PromptLayerChatOpenAI(ChatOpenAI):
             response_dict, params = super()._create_message_dicts(
                 [generation.message], stop
             )
+            request_usage = generated_responses.llm_output["token_usage"]
             pl_request_id = promptlayer_api_request(
                 "langchain.PromptLayerChatOpenAI",
                 "langchain",
@@ -50,6 +51,7 @@ class PromptLayerChatOpenAI(ChatOpenAI):
                 response_dict,
                 request_start_time,
                 request_end_time,
+                request_usage,
                 return_pl_id=self.return_pl_id,
             )
             if self.return_pl_id:
@@ -74,6 +76,7 @@ class PromptLayerChatOpenAI(ChatOpenAI):
             response_dict, params = super()._create_message_dicts(
                 [generation.message], stop
             )
+            request_usage = generated_responses.llm_output["token_usage"]
             pl_request_id = await promptlayer_api_request_async(
                 "langchain.PromptLayerChatOpenAI.async",
                 "langchain",
@@ -83,6 +86,7 @@ class PromptLayerChatOpenAI(ChatOpenAI):
                 response_dict,
                 request_start_time,
                 request_end_time,
+                request_usage,
                 return_pl_id=self.return_pl_id,
             )
             if self.return_pl_id:

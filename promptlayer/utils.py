@@ -94,6 +94,7 @@ def promptlayer_api_request(
     response,
     request_start_time,
     request_end_time,
+    request_usage,
     return_pl_id=False,
 ):
     if type(response) != dict and hasattr(response, "to_dict_recursive"):
@@ -110,6 +111,7 @@ def promptlayer_api_request(
                 "request_response": response,
                 "request_start_time": request_start_time,
                 "request_end_time": request_end_time,
+                "request_usage": request_usage,
             },
         )
         if request_response.status_code != 200:
@@ -141,6 +143,7 @@ def promptlayer_api_request_async(
     response,
     request_start_time,
     request_end_time,
+    request_usage,
     return_pl_id=False,
 ):
     return run_in_thread_async(
@@ -154,6 +157,7 @@ def promptlayer_api_request_async(
         response,
         request_start_time,
         request_end_time,
+        request_usage,
         return_pl_id=return_pl_id,
     )
 
