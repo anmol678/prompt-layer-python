@@ -24,6 +24,7 @@ def promptlayer_api_handler(
     response,
     request_start_time,
     request_end_time,
+    request_usage,
     return_pl_id=False,
 ):
     if isinstance(response, types.GeneratorType) or isinstance(
@@ -39,6 +40,7 @@ def promptlayer_api_handler(
                 "tags": tags,
                 "request_start_time": request_start_time,
                 "request_end_time": request_end_time,
+                "request_usage": request_usage,
                 "return_pl_id": return_pl_id,
             },
         )
@@ -52,6 +54,7 @@ def promptlayer_api_handler(
             response,
             request_start_time,
             request_end_time,
+            request_usage,
             return_pl_id=return_pl_id,
         )
         if return_pl_id:
@@ -68,6 +71,7 @@ async def promptlayer_api_handler_async(
     response,
     request_start_time,
     request_end_time,
+    request_usage,
     return_pl_id=False,
 ):
     return await run_in_thread_async(
@@ -81,6 +85,7 @@ async def promptlayer_api_handler_async(
         response,
         request_start_time,
         request_end_time,
+        request_usage,
         return_pl_id=return_pl_id,
     )
 
@@ -344,6 +349,7 @@ class OpenAIGeneratorProxy:
                 self.cleaned_result(),
                 self.api_request_arugments["request_start_time"],
                 self.api_request_arugments["request_end_time"],
+                self.api_request_arugments["request_usage"],
                 return_pl_id=self.api_request_arugments["return_pl_id"],
             )
             if self.api_request_arugments["return_pl_id"]:

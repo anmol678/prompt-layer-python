@@ -48,6 +48,7 @@ class PromptLayerBase(object):
                     response,
                     request_start_time,
                     request_end_time,
+                    request_usage=response["usage"],
                     return_pl_id=return_pl_id,
                 )
 
@@ -63,5 +64,6 @@ class PromptLayerBase(object):
             response,
             request_start_time,
             request_end_time,
+            request_usage=response["usage"],
             return_pl_id=return_pl_id,
         )
