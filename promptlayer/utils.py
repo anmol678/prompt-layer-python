@@ -106,7 +106,7 @@ def promptlayer_api_request(
         response = response.to_dict_recursive()
     try:
         request_response = requests.post(
-            f"{URL_API_PROMPTLAYER}/request",
+            f"{URL_API_PROMPTLAYER}/logs",
             json={
                 "function_name": function_name,
                 "provider_type": provider_type,
