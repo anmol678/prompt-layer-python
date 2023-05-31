@@ -29,6 +29,7 @@ class PromptLayerOpenAI(OpenAI):
     """
 
     pl_tags: list[str] | None
+    pl_project: str | None
     return_pl_id: bool | None = False
 
     def _generate(
@@ -55,6 +56,7 @@ class PromptLayerOpenAI(OpenAI):
                 request_start_time,
                 request_end_time,
                 request_usage,
+                metadata={ "project": self.pl_project if self.pl_project else None },
                 return_pl_id=self.return_pl_id,
             )
             if self.return_pl_id:
@@ -88,6 +90,7 @@ class PromptLayerOpenAI(OpenAI):
                 request_start_time,
                 request_end_time,
                 request_usage,
+                metadata={ "project": self.pl_project if self.pl_project else None },
                 return_pl_id=self.return_pl_id,
             )
             if self.return_pl_id:

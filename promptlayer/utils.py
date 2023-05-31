@@ -25,6 +25,7 @@ def promptlayer_api_handler(
     request_start_time,
     request_end_time,
     request_usage,
+    metadata,
     return_pl_id=False,
 ):
     if isinstance(response, types.GeneratorType) or isinstance(
@@ -41,6 +42,7 @@ def promptlayer_api_handler(
                 "request_start_time": request_start_time,
                 "request_end_time": request_end_time,
                 "request_usage": request_usage,
+                "metadata": metadata,
                 "return_pl_id": return_pl_id,
             },
         )
@@ -55,6 +57,7 @@ def promptlayer_api_handler(
             request_start_time,
             request_end_time,
             request_usage,
+            metadata,
             return_pl_id=return_pl_id,
         )
         if return_pl_id:
@@ -72,6 +75,7 @@ async def promptlayer_api_handler_async(
     request_start_time,
     request_end_time,
     request_usage,
+    metadata,
     return_pl_id=False,
 ):
     return await run_in_thread_async(
@@ -86,6 +90,7 @@ async def promptlayer_api_handler_async(
         request_start_time,
         request_end_time,
         request_usage,
+        metadata,
         return_pl_id=return_pl_id,
     )
 
@@ -100,6 +105,7 @@ def promptlayer_api_request(
     request_start_time,
     request_end_time,
     request_usage,
+    metadata,
     return_pl_id=False,
 ):
     if type(response) != dict and hasattr(response, "to_dict_recursive"):
@@ -117,6 +123,7 @@ def promptlayer_api_request(
                 "request_start_time": request_start_time,
                 "request_end_time": request_end_time,
                 "request_usage": request_usage,
+                "metadata": metadata,
             },
         )
         if request_response.status_code != 200:
@@ -149,6 +156,7 @@ def promptlayer_api_request_async(
     request_start_time,
     request_end_time,
     request_usage,
+    metadata,
     return_pl_id=False,
 ):
     return run_in_thread_async(
@@ -163,6 +171,7 @@ def promptlayer_api_request_async(
         request_start_time,
         request_end_time,
         request_usage,
+        metadata,
         return_pl_id=return_pl_id,
     )
 
@@ -350,6 +359,7 @@ class OpenAIGeneratorProxy:
                 self.api_request_arugments["request_start_time"],
                 self.api_request_arugments["request_end_time"],
                 self.api_request_arugments["request_usage"],
+                self.api_request_arugments["metadata"],
                 return_pl_id=self.api_request_arugments["return_pl_id"],
             )
             if self.api_request_arugments["return_pl_id"]:
