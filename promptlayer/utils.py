@@ -11,7 +11,7 @@ import requests
 import promptlayer
 
 URL_API_PROMPTLAYER = os.environ.setdefault(
-    "URL_API_PROMPTLAYER", "http://127.0.0.1:8000/api"
+    "URL_API_PROMPTLAYER", "http://127.0.0.1:4000/api"
 )
 
 
