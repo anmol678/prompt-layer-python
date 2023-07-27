@@ -176,6 +176,7 @@ def promptlayer_api_request_async(
     )
 
 
+# TODO: Update
 def promptlayer_get_prompt(prompt_name, version=None):
     """
     Get a prompt from the PromptLayer library
@@ -204,6 +205,7 @@ def promptlayer_get_prompt(prompt_name, version=None):
     return request_response.json()
 
 
+# TODO: Update
 def promptlayer_publish_prompt(prompt_name, prompt_template, tags):
     try:
         request_response = requests.post(
@@ -230,15 +232,13 @@ def promptlayer_publish_prompt(prompt_name, prompt_template, tags):
     return True
 
 
-def promptlayer_track_prompt(request_id, prompt_name, input_variables, version):
+def promptlayer_track_prompt(request_id, prompt_template_id, version):
     try:
         request_response = requests.post(
-            f"{URL_API_PROMPTLAYER}/library-track-prompt",
+            f"{URL_API_PROMPTLAYER}/log/{request_id}/track",
             json={
-                "request_id": request_id,
-                "prompt_name": prompt_name,
-                "prompt_input_variables": input_variables,
-                "version": version,
+                "prompt_template_id": prompt_template_id,
+                "version_number": version,
             },
         )
         if request_response.status_code != 200:
@@ -263,6 +263,7 @@ def promptlayer_track_prompt(request_id, prompt_name, input_variables, version):
     return True
 
 
+# TODO: Update
 def promptlayer_track_metadata(request_id, metadata):
     try:
         request_response = requests.post(
@@ -293,6 +294,7 @@ def promptlayer_track_metadata(request_id, metadata):
     return True
 
 
+# TODO: Update
 def promptlayer_track_score(request_id, score):
     try:
         request_response = requests.post(
