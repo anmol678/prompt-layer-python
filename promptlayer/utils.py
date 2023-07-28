@@ -235,7 +235,7 @@ def promptlayer_publish_prompt(prompt_name, prompt_template, tags):
 def promptlayer_track_prompt(request_id, prompt_template_id, version):
     try:
         request_response = requests.post(
-            f"{URL_API_PROMPTLAYER}/log/{request_id}/track",
+            f"{URL_API_PROMPTLAYER}/logs/{request_id}/track",
             json={
                 "prompt_template_id": prompt_template_id,
                 "version_number": version,
